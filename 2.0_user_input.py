@@ -26,10 +26,10 @@ DELIVERABLE
     This file, with your comments and your code.
 """
 
-# 1. In:
-# 2. Process:
-# 3. Out:
-# 4. My two fields, and what I would do with them:
+# 1. In:my name and age
+# 2. Process:joined the name and the age in a same sentence
+# 3. Out:joined string with name and age
+# 4. My two fields, and what I would do with them:i just joined my name and age
 
 
 # Your code below
