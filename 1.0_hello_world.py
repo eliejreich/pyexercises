@@ -36,3 +36,6 @@ print("3. Hello")
 print("4. Hello")
 print("5. Hello")
 
+for i in range (0,4):
+    print("Hello")
+    
