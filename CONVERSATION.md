@@ -18,3 +18,12 @@ print(toy_text)
 ```
 
 What is the first argument of the `print()` function?
+
+---
+## 2026-10-27 13:58, in .
+
+**Me:** what is python
+
+**Tutor:**
+
+Refused, off topic.
