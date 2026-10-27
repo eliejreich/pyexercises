@@ -22,11 +22,17 @@ DELIVERABLE
     This file, with your comments and your code.
 """
 
-# 1. In:
-# 2. Process:
-# 3. Out:
-# 4. My message, and why:
+# 1. In: a string of my name 
+# 2. Process: a for loop that prints the string five times
+# 3. Out: my name is printed 5 times
+# 4. My message, and why: write a python file to print my name five times using python
 
 
 # Your code below
 print("Hello, world!")
+print("1. Hello")
+print("2. Hello")
+print("3. Hello")
+print("4. Hello")
+print("5. Hello")
+
