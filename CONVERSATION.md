@@ -27,3 +27,52 @@ What is the first argument of the `print()` function?
 **Tutor:**
 
 Refused, off topic.
+
+---
+## 2026-10-27 15:25, in .
+
+**Me:** how to add 2 numbers
+
+**Tutor:**
+
+Adding two numbers in Python is done with the `+` operator.
+
+```python
+def add_two_numbers(a, b):
+    # TODO: return the sum of a and b
+    pass
+
+# Example usage (not part of the function):
+result = add_two_numbers(3, 5)
+print(result)  # Expected output: 8
+```
+
+What is the operator used to add two numbers in Python?
+
+---
+## 2026-10-27 15:26, in .
+
+**Me:** $ python tutor.py " how to add two numbers in python"
+
+**Tutor:**
+
+Refused, off topic.
+
+---
+## 2026-10-27 15:30, in .
+
+**Me:** how to add two numbers
+
+**Tutor:**
+
+Adding two numbers in Python is done with the `+` operator.
+
+```python
+# TODO: replace a and b with your numbers
+a = 3
+b = 5
+result = a + b
+print(result)
+```
+
+What is the name of the operator used to add two numbers?
