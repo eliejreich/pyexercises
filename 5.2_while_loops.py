@@ -41,14 +41,67 @@ while i < 10:
 print("This is the end of the loop. The maximum number of attempts has been reached.")
 
 # Your code below
-while True:
-   user_input = input("Do you want to continue? (yes/no): ").strip().lower()
+# 1. In:
+#    User text inputs prompted repeatedly inside a loop (confirming attendance/guest list confirmation for a VIP event).
+# 2. Process:
+#    The program prompts the user for confirmation ("yes" or "no"). Each input is sanitized using .strip().lower() to handle extra spaces and capital letters.
+#    The loop keeps track of the number of attempts and continues until either a valid "yes" response is given OR the maximum limit of 5 attempts is reached.
+# 3. Out:
+#    Immediate feedback after each attempt, followed by a final summary detailing total attempts, successful confirmation status, and normalized user input.
+# 4. My stop condition, my attempt limit, my summary:
+#    - Stop Condition: User enters "yes" (case-insensitive, ignoring leading/trailing spaces) OR attempt count reaches MAX_ATTEMPTS.
+#    - Maximum Attempts Limit: 5 attempts. If reached without confirmation, the program safely halts the loop to prevent infinite repetition.
+#    - Summary Contains: Total attempts made, final confirmation status (Confirmed vs. Timed Out/Failed), and last input received.
 
-   if user_input == "yes":
-        print("You chose to continue.")
-        break
-   elif user_input == "no":
-        print("You chose to stop.")
-        break
-   else:
-        print("Invalid input. Please enter 'yes' or 'no'.")
+
+# Configuration constants
+MAX_ATTEMPTS = 5
+EXPECTED_CONFIRMATION = "yes"
+
+# Tracking variables
+attempt_count = 0
+is_confirmed = False
+last_raw_input = ""
+
+print("--- VIP Guest List Confirmation Prompt ---")
+print(f"Please confirm your attendance. You have a maximum of {MAX_ATTEMPTS} attempts.\n")
+
+# Anti-crash repeating while loop with safety counter
+while attempt_count < MAX_ATTEMPTS and not is_confirmed:
+    attempt_count += 1
+    
+    # Prompt user for input
+    last_raw_input = input(f"Attempt {attempt_count}/{MAX_ATTEMPTS} — Confirm attendance (yes/no)? ")
+    
+    # Sanitize input: remove leading/trailing whitespace and convert to lowercase
+    clean_input = last_raw_input.strip().lower()
+    
+    if clean_input == EXPECTED_CONFIRMATION:
+        is_confirmed = True
+        print("-> Attendance successfully confirmed!\n")
+    elif clean_input == "no":
+        print("-> You entered 'no'. Please type 'yes' when you are ready to confirm.\n")
+    else:
+        print(f"-> Unrecognized input '{last_raw_input.strip()}'. Please respond with 'yes' or 'no'.\n")
+
+# Display final summary after loop terminates
+print("========================================")
+print("             SUMMARY REPORT             ")
+print("========================================")
+print(f"Total Attempts Used: {attempt_count} / {MAX_ATTEMPTS}")
+print(f"Last Raw Input:      {repr(last_raw_input)}")
+print(f"Confirmation Status: {'CONFIRMED' if is_confirmed else 'FAILED (Max attempts reached)'}")
+
+if not is_confirmed:
+    print("\nNote: Maximum attempt limit was reached without valid confirmation. Session terminated safely.")
+
+
+# CHECK IT YOURSELF
+#
+# Test 1: Never giving the expected answer ("no", "maybe", "abc")
+# Inputs: 5 invalid responses in a row.
+# Result: Loop stopped automatically after Attempt 5/5. Output: "FAILED (Max attempts reached)". Program did not loop infinitely.
+#
+# Test 2: Input with capitals and extra spaces (" YES ", "Yes", "  yes  ")
+# Input: "  YES  "
+# Result: Sanitized cleanly to "yes". Loop recognized confirmation on attempt 1 and terminated successfully.
