@@ -31,29 +31,63 @@ DELIVERABLE
 
 
 # Your code below
-number_1 = float (input("Enter the first number:"))
-number_2 = float (input("Enter the second number:"))
+# 1. In:
+#    Two numbers entered by the user via the input() function.
+# 2. Process:
+#    The program prompts for two inputs, converts them to floats (with validation loops to prevent crashes on non-numeric input),
+#    calculates addition, subtraction, and multiplication, and handles division separately to avoid division by zero.
+# 3. Out:
+#    The results of the four arithmetic operations (addition, subtraction, multiplication, and division or an error message for division).
+# 4. What happens when the second number is zero, and why:
+#    Decision: Display a clear message ("Division by zero is undefined") specifically for division, while still showing the valid results for addition, subtraction, and multiplication.
+#    Defense: This is user-friendly because a zero second number is completely valid for +, -, and *, so stopping the whole program or rejecting the input entirely would unnecessarily discard useful calculations.
 
-print(number_1, number_2)
 
-#sum of the numbers 
-sum = number_1 + number_2
-print("The sum of the two numbers is: ", sum)
+# Helper function to prompt and validate numeric input (anti-crash)
+def get_valid_number(prompt):
+    while True:
+        user_input = input(prompt).strip()
+        try:
+            return float(user_input)
+        except ValueError:
+            print("Invalid input! Please enter a valid number (e.g., 5 or 3.14).\n")
 
-#difference of two numbers 
-diff = number_2 - number_1
-print("The difference between two numbers is : ", diff)
 
-# multiplication of two numbers
-product = number_1 * number_2
-print("The product of two numbers is: ", product)
+# Get validated numbers from the user
+num1 = get_valid_number("Enter the first number: ")
+num2 = get_valid_number("Enter the second number: ")
 
-# division of two numbers
-division = number_1 / number_2
-print("The division of two numbers is:", division)
+# Compute operations
+addition = num1 + num2
+subtraction = num1 - num2
+multiplication = num1 * num2
 
-if number_2 ! = 0
-    division = number_1 / number_2
-    print("The division of two numbers is: ", division)
+# Display results
+print("\n--- Results ---")
+print(f"Addition ({num1} + {num2}):       ", addition)
+print(f"Subtraction ({num1} - {num2}):    ", subtraction)
+print(f"Multiplication ({num1} * {num2}): ", multiplication)
+
+# Handle division safely
+if num2 == 0:
+    print(f"Division ({num1} / {num2}):       Undefined (Cannot divide by zero)")
 else:
-    print("The number 2 is zero")
+    division = num1 / num2
+    print(f"Division ({num1} / {num2}):       ", division)
+
+
+# CHECK IT YOURSELF
+#
+# Test 1: 7 divided by 2
+# Inputs: 7 and 2
+# Expected: 3.5
+# Reason note: If a Python program displays 3 instead of 3.5 for 7 / 2, it is because integer division (//) was used instead of float division (/),
+# or in older Python versions (Python 2), dividing two integers automatically truncated the decimal result to an integer.
+# Using standard division `/` in Python 3 yields 3.5 directly.
+#
+# Test 2: Second number as 0
+# Inputs: 7 and 0
+# Addition: 7.0
+# Subtraction: 7.0
+# Multiplication: 0.0
+# Division: Undefined (Cannot divide by zero) — program executes cleanly without throwing a ZeroDivisionError crash.
