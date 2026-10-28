@@ -33,30 +33,63 @@ DELIVERABLE
 
 
 # Your code below
-number_1 = 2
-number_2 = 3 
-number_3 = 4 
-number_4 = 5 
+# 1. In:
+#    A pre-defined list of luxury event project budgets (in Euros) and optional user selection index entered via input().
+# 2. Process:
+#    The program creates a list of 8 event budgets, prints the full list, prompts the user to select an item safely by index,
+#    sorts the list in ascending order, and computes the average budget across all projects.
+# 3. Out:
+#    The raw list, the specific chosen project budget, the sorted list, and the computed average project budget.
+# 4. What my list is about, and what I computed from it:
+#    - Theme: Event management budgets (in Euros) for luxury brand activation projects and VIP galas during the Cannes Film Festival season.
+#    - Computation: Average project budget (Sum of all budgets / Number of projects).
+#    - Why interesting: Knowing the average event expenditure allows management to establish baseline budget benchmarks for future prestige brand pitches and resource allocation.
 
-print(number_1)
-print(number_2)
-print(number_3)
-print(number_4)
 
-list_of_numbers = {10,8,7,1,3,9,6}
-print("listing all the numbers in the list")
-print(list_of_numbers)
-print("Listing the third item in the list")
-print(list_of_numbers)
+# Define the list of luxury event budgets (in Euros)
+event_budgets = [45000, 120000, 85000, 30000, 250000, 150000, 95000, 60000]
 
-# sorting the list
-print("The list of numbers after sorted")
-list_of_numbers.sort()
-print(list_of_numbers)
+# Display whole list
+print("--- Luxury Event Projects Budgets (€) ---")
+print("All Project Budgets:", event_budgets)
 
-# removing the last item from the list
-list_of_numbers.pop()
+# Display one item chosen safely by user (Anti-Crash Index Retrieval)
+print("\n--- Select a Specific Project ---")
+while True:
+    raw_input = input(f"Choose a project number to inspect (1 to {len(event_budgets)}): ").strip()
+    try:
+        choice_idx = int(raw_input) - 1  # Convert 1-based user input to 0-based index
+        if 0 <= choice_idx < len(event_budgets):
+            selected_item = event_budgets[choice_idx]
+            print(f"Selected Project #{choice_idx + 1} Budget: €{selected_item:,}")
+            break
+        else:
+            print(f"Out of range! Please enter a number between 1 and {len(event_budgets)}.\n")
+    except ValueError:
+        print("Invalid input! Please enter a whole number.\n")
 
-# list of numbers after removing the last 
-print("The list of numbers after removing the last item from the list")
-print(list_of_numbers)
+# Display sorted list (without modifying original list irreversibly)
+sorted_budgets = sorted(event_budgets)
+print("\n--- Sorted Budgets (Ascending) ---")
+print("Sorted Budgets:", sorted_budgets)
+
+# Compute something from the list (Average Budget)
+total_budget = sum(event_budgets)
+average_budget = total_budget / len(event_budgets)
+
+print("\n--- Computed Metric ---")
+print(f"Total Portfolio Budget:   €{total_budget:,}")
+print(f"Average Project Budget: €{average_budget:,.2f}")
+
+
+# CHECK IT YOURSELF
+#
+# Manual Verification on 3 items:
+# Items chosen: €45,000, €120,000, €85,000
+# Manual Sum: 45,000 + 120,000 + 85,000 = 250,000
+# Manual Average: 250,000 / 3 = €83,333.33
+#
+# Full List Program Output Verification:
+# Total Sum: 45,000 + 120,000 + 85,000 + 30,000 + 250,000 + 150,000 + 95,000 + 60,000 = €835,000
+# Program Average: 835,000 / 8 = €104,375.00
+# Program output matches exact arithmetic computation.
