@@ -37,38 +37,63 @@ DELIVERABLE
 
 # Your code below
 # Original list built in exercise 4.0
-campaign_budgets = [4500, 12000, 8500, 3200, 15000, 9100, 6800, 11400]
-print("0. Original list at the start:")
-print(campaign_budgets)
-print("-" * 50)
+# 1. In:
+#    A pre-defined list of luxury event project budgets (in Euros) from Exercise 4.0: [45000, 120000, 85000, 30000, 250000, 150000, 95000, 60000].
+# 2. Process:
+#    The program creates four distinct reordered views of the list using both non-destructive methods (sorted(), slicing)
+#    and a destructive method (.sort()) safely executed on a shallow copy (.copy()). It then displays the original list to verify it remains unchanged.
+# 3. Out:
+#    The four differently ordered versions of the event budgets, followed by the intact original list.
+# 4. My four orders, and which ones modify the original:
+#    - Order 1: Ascending order using sorted() -> Creates a NEW list (does NOT modify original).
+#    - Order 2: Descending order using sorted(..., reverse=True) -> Creates a NEW list (does NOT modify original).
+#    - Order 3: Reversed order using slicing [::-1] -> Creates a NEW list (does NOT modify original).
+#    - Order 4: Sorted in-place using .sort() -> MODIFIES the list in-place! To protect the original list, we must execute .sort() on a separate copy created via .copy().
 
-# Order 1: Ascending order using sorted() -> returns a NEW list
-order_1_ascending = sorted(campaign_budgets)
-print("1. Displayed in Ascending order (using sorted()):")
-print(order_1_ascending)
-print("-" * 50)
 
-# Order 2: Descending order using sorted(..., reverse=True) -> returns a NEW list
-order_2_descending = sorted(campaign_budgets, reverse=True)
-print("2. Displayed in Descending order (using sorted(..., reverse=True)):")
-print(order_2_descending)
-print("-" * 50)
+# Define original list from Exercise 4.0
+event_budgets = [45000, 120000, 85000, 30000, 250000, 150000, 95000, 60000]
 
-# Order 3: Reversed order using slicing [::-1] -> returns a NEW list
-order_3_reversed = campaign_budgets[::-1]
-print("3. Displayed in Reversed order (using slicing [::-1]):")
-print(order_3_reversed)
-print("-" * 50)
+print("--- Original Initial List ---")
+print("Original:", event_budgets)
+print()
 
-# Order 4: In-place sorted order using .sort()
-# .sort() modifies the target list directly. We apply it on a COPY to protect the original.
-budgets_copy = campaign_budgets.copy()
-budgets_copy.sort()
-order_4_in_place_sort = budgets_copy
-print("4. Displayed using .sort() on a copy (demonstrating in-place modification):")
-print(order_4_in_place_sort)
-print("-" * 50)
+# Order 1: Ascending (Non-destructive using sorted())
+ascending_budgets = sorted(event_budgets)
+print("1. Ascending order (sorted()):             ", ascending_budgets)
 
-# PROOF: Display the original list to show it has not been modified or damaged
-print("PROOF: Original list at the end (must match exercise 4.0 exactly):")
-print(campaign_budgets)
+# Order 2: Descending (Non-destructive using sorted(..., reverse=True))
+descending_budgets = sorted(event_budgets, reverse=True)
+print("2. Descending order (sorted(reverse=True)):", descending_budgets)
+
+# Order 3: Reversed (Non-destructive using slicing [::-1])
+reversed_budgets = event_budgets[::-1]
+print("3. Reversed order (slicing [::-1]):        ", reversed_budgets)
+
+# Order 4: Sorted via .sort() (In-place modification applied safely to a COPY)
+copied_budgets = event_budgets.copy()  # Prevents modifying original event_budgets
+copied_budgets.sort()
+print("4. In-place sorted copy (.copy().sort()):   ", copied_budgets)
+
+# Proof that original list remains completely undamaged
+print("\n--- FINAL VERIFICATION ---")
+print("Original list after operations:", event_budgets)
+
+# Anti-Crash Proof Check
+if event_budgets == [45000, 120000, 85000, 30000, 250000, 150000, 95000, 60000]:
+    print("SUCCESS: Original list matches Exercise 4.0 exactly item-by-item!")
+else:
+    print("ERROR: Original list was modified!")
+
+
+# CHECK IT YOURSELF
+#
+# Original list in Exercise 4.0: [45000, 120000, 85000, 30000, 250000, 150000, 95000, 60000]
+# Order 1 (Ascending):  [30000, 45000, 60000, 85000, 95000, 120000, 150000, 250000]
+# Order 2 (Descending): [250000, 150000, 120000, 95000, 85000, 60000, 45000, 30000]
+# Order 3 (Reversed):   [60000, 95000, 150000, 250000, 30000, 85000, 120000, 45000]
+# Order 4 (Copy Sort):  [30000, 45000, 60000, 85000, 95000, 120000, 150000, 250000]
+#
+# Final Verification Output:
+# [45000, 120000, 85000, 30000, 250000, 150000, 95000, 60000]
+# Item-by-item comparison proves the original list was not altered or damaged.
