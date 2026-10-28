@@ -33,5 +33,22 @@ DELIVERABLE
 # 3. Out:
 # 4. My stop condition, my attempt limit, my summary:
 
+i = 0
+while i < 10:
+    print("This is attempt number:", i + 1)
+    i = i + 1
+
+print("This is the end of the loop. The maximum number of attempts has been reached.")
 
 # Your code below
+while True:
+   user_input = input("Do you want to continue? (yes/no): ").strip().lower()
+
+   if user_input == "yes":
+        print("You chose to continue.")
+        break
+   elif user_input == "no":
+        print("You chose to stop.")
+        break
+   else:
+        print("Invalid input. Please enter 'yes' or 'no'.")
