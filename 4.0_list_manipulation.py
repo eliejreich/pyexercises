@@ -26,10 +26,10 @@ DELIVERABLE
     This file, with your comments and your code.
 """
 
-# 1. In:
-# 2. Process:
-# 3. Out:
-# 4. What my list is about, and what I computed from it:
+# 1. In: a list of marketing channels
+# 2. Process:the programm displays the list, one item,the sorted list and the number of channels
+# 3. Out:the list, one channel, the sorted list and total number of channels
+# 4. What my list is about, and what I computed from it:my list is about marketing channels, i counted them to see how many channels i can use.
 
 
 # Your code below
