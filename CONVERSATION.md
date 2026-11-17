@@ -115,3 +115,134 @@ Why return instead of print?
 The function’s job is to compute a value; printing only shows it on the screen. When you call the function later (for example in a larger script), you need the number, not a printed line.
 
 Question: Which line of the function actually changes the value of `count`?
+
+---
+## 2026-11-17 15:11, in .
+
+**Me:** how to write a for loop in python
+
+**Tutor:**
+
+A for loop repeats a block of code for each item in a sequence.
+
+```python
+# Loop over a list of toy products
+products = ["alpha", "beta", "gamma"]
+
+for product in products:
+    # TODO: print the product name
+    pass
+```
+
+What is the keyword that starts a for loop in Python?
+
+---
+## 2026-11-17 15:15, in .
+
+**Me:** how to read a csv file in python with csv.DictReader
+
+**Tutor:**
+
+Reading a CSV with csv.DictReader is a way to load each row as a dictionary.
+
+```python
+import csv
+
+with open("toy_data.csv", mode="r", encoding="utf-8") as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+        # TODO: print the value of the column named "cost"
+        print(row["cost"])
+```
+
+What argument of csv.DictReader tells it the names of the columns?
+
+---
+## 2026-11-17 15:15, in .
+
+**Me:** how to return a tuple from a function and unpack it in python
+
+**Tutor:**
+
+Returning a tuple from a function and unpacking it is a single concept.
+
+**Returning and unpacking a tuple**
+```python
+def get_campaign_metrics():
+    # TODO: replace the toy numbers with the campaign values you need
+    clicks = 1200
+    cost = 450.0
+    return clicks, cost   # returns a tuple (1200, 450.0)
+
+# Unpack the tuple into two variables
+total_clicks, total_cost = get_campaign_metrics()
+```
+
+What are the names of the two variables that receive the tuple values?
+
+---
+## 2026-11-17 15:15, in .
+
+**Me:** how to shuffle a list randomly in python
+
+**Tutor:**
+
+Shuffling a list randomly is done with the `random.shuffle` function.
+
+```python
+import random
+
+def shuffle_list(items):
+    # TODO: shuffle the list in place
+    return items
+
+# Toy data
+toys = ["alpha", "beta", "gamma"]
+print(shuffle_list(toys))
+```
+
+What argument does `random.shuffle` take?
+
+---
+## 2026-11-17 15:16, in .
+
+**Me:** how does python compare tuples with max and min
+
+**Tutor:**
+
+Comparing tuples in Python with max() and min() works element by element from left to right.
+
+```python
+# Comparing tuples
+t1 = (3, 5, 1)
+t2 = (3, 4, 9)
+
+# TODO: Which tuple is larger?
+largest = max(t1, t2)
+smallest = min(t1, t2)
+
+print(largest, smallest)
+```
+
+What does Python compare first when it sees two tuples?
+
+---
+## 2026-11-17 15:16, in .
+
+**Me:** how to append a row to a csv file in python with csv.writer
+
+**Tutor:**
+
+Appending a row to a CSV file is done by opening the file in append mode and using csv.writer.
+
+```python
+import csv
+
+# open the file in append mode
+with open('toy_data.csv', 'a', newline='') as file:
+    writer = csv.writer(file)
+    # TODO: write one row of strings or numbers
+    writer.writerow([ ... ])
+```
+
+What is the second argument of open() when you want to append?
