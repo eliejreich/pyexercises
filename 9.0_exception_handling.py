@@ -19,7 +19,7 @@ WHAT THE AI CANNOT KNOW
     An assistant will often propose catching every error at once. Find out why catching
     each failure separately is better, and write the reason in a comment.
 
-CHECK IT YOURSELF
+# CHECK IT YOURSELF
     Run it with: a normal number, then zero, then the word "abc", then an empty line.
     Four runs, four behaviours, all described in a comment. If any of them stopped your
     program, it is not finished.
@@ -66,7 +66,7 @@ while attempts < MAX_ATTEMPTS:
 else:
     # Runs if the user exhausts all 5 attempts without entering a valid non-zero number
     print("Maximum attempts reached without a valid guest count. Exiting safely.")
-    CHECK IT YOURSELF
+# CHECK IT YOURSELF
 # Results observed across the four required test inputs:
 # 1. Normal number ("150"):
 #    Converted cleanly to 150.0, computed 120000.0 / 150.0 = €800.00, printed the result,
